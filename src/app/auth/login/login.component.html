@@ -1,0 +1,32 @@
+<div [@enterAnimation]>
+  <div class="form-container">
+    <form *ngIf="showForm" (submit)="onLoginSubmit()" [@formEnterAnimation]>
+      <div class="form-group">
+        <input (keydown.space)="$event.preventDefault();" type="text" class="form-control username-input"
+          [(ngModel)]="username" name="username" placeholder="username" />
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="password" />
+      </div>
+
+      <br />
+      <br />
+
+      <li class="btn btn-second my-2 my-sm-0" [routerLinkActive]="['active']" [routerLink]="['/register']">
+        <p class="center-link">I don't have an account</p>
+      </li>
+
+      <button type="submit" class="btn btn-submit" [disabled]="!username || !password">
+        LOG IN
+      </button>
+    </form>
+
+    <div *ngIf="lookingForUser" [@enterAnimation] class="no-such-user">
+      <lottie-animation-view [options]="noSuchUserConfig" [width]="300" [height]="300"
+        (animCreated)="handleAnimation($event)" class="lottie">
+      </lottie-animation-view>
+      <a *ngIf="showNoSuchUserMsg" [@enterAnimation]>No such user</a>
+      <a *ngIf="showWelcomeMsg" [@enterAnimation]>welcome back, {{ username }}</a>
+    </div>
+  </div>
+</div>
