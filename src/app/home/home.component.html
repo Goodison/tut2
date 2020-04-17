@@ -1,10 +1,11 @@
-<div class="container">
+<div *ngIf="data" class="container">
 
   
   <div class="row">
 
     <div class="col-12 myform">
-      <h3>Starz United</h3>
+      <img class="avatar" src="../../assets/{{data.user.avatar}}" alt="">
+      <h3 >Welcome to Starz United {{data.user.username}}</h3>
       <hr>
       <ol>
           <li>Fill up list every wednesday and friday before 17:00 Uk time!</li>

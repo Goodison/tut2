@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
       if (this.data.success) {
         this.authService.storeUserData(this.data.token, this.data.user);
         this.startLoggedInAnimation();
-        console.log("Logged in");
+        console.log(this.data.user);
       } else if (this.data.msg == "no such user") {
         this.startUserNotFoundAnimation();
       } else {

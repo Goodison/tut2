@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  data;
 
-  constructor() { }
+
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authService.getUserByUsername("ronaldo").subscribe((data) => {
+      this.data = data;
+      console.log(this.data)
+    })
     var numname = [
       "zero",
       "one",
